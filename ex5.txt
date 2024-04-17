@@ -1,0 +1,61 @@
+create table emp5(empno number(5) primary key,empname varchar2(15));
+insert into emp5 values(&empno,'&empname');
+101
+athira
+select*from emp5;
+insert into emp5 values(&empno,'&empname');
+102
+bebi
+insert into emp5 values(&empno,'&empname');
+103
+Beni
+insert into emp5 values(&empno,'&empname');
+104
+bershiba
+insert into emp5 values(&empno,'&empname');
+105
+Kavi
+select*from emp5;
+create sequence emp_seq
+start with 105
+increment by 1;
+insert into emp5 values(emp_seq.nextval,'anu');
+insert into emp5 values(emp_seq.nextval,'manu');
+insert into emp5 values(emp_seq.nextval,'ben');
+insert into emp5 values(emp_seq.nextval,'pavi');
+select*from emp5;
+create synonym emp_sym for emp5;
+select synonym_name,table_name,table_owner
+from user_synonyms;
+create index iemp2
+on emp5(empno,empname);
+select index_name,
+table_name
+drop 
+ 
+
+#################################
+create table emp5(empno number(5) primary key, empname varchar2(15));
+insert into emp5 values(&empno, '&empname');
+101, 'athira'
+102, 'bebi'
+103, 'Beni'
+104, 'bershiba'
+105, 'Kavi'
+select * from emp5;
+create sequence emp_seq start with 105 increment by 1;
+insert into emp5 values(emp_seq.nextval, 'anu');
+insert into emp5 values(emp_seq.nextval, 'manu');
+insert into emp5 values(emp_seq.nextval, 'ben');
+insert into emp5 values(emp_seq.nextval, 'pavi');
+select * from emp5;
+create synonym emp_sym for emp5;
+select synonym_name, table_name, table_owner
+from user_synonyms
+where synonym_name = 'EMP_SYM';
+create index iemp2 on emp5(empno, empname);
+select index_name, table_name
+from user_indexes
+where table_name = 'EMP5';
+
+

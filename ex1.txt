@@ -1,0 +1,18 @@
+create table sr(stuno number(4),stuname varchar2(10),major varchar2(15),course varchar2(5),joindate date,year number(4));
+desc sr
+insert into sr values(100,'Rahul','physics','MSC','11-jul-14',2014);
+insert into sr values(101,'Beni','chemistry','BSC','12-jul-13',2013);
+insert into sr values(102,'Bershi','maths','MSC','18-jul-14',2014);
+insert into sr values(103,'Bebi','botany','BSC','13-jul-13',2013);
+insert into sr values(104,'Aathi','computer','MSC','19-jul-13',2013);
+insert into sr values(105,'Ishu','physics','MSC','20-jul-13',2013);
+insert into sr values(106,'Jancy','tamil','MA','21-feb-13',2013);
+insert into sr values(107,'Ani','physics','BSC','26-nov-13',2013);
+insert into sr values(108,'Nilo','b.com','MA','15-jul-13',2013);
+insert into sr values(109,'Reshma','computer','BCA','16-Aug-13',2013);
+select*from sr;
+select*from sr where major=&m;
+'physics'
+select*from sr where course=&c;
+'MSC'
+select*from sr where to_char(joindate,'mon')='jul';

@@ -1,0 +1,91 @@
+create table es(name varchar2(10),rollno number(5));
+desc es
+insert into es values('ishu',100);
+insert into es values('janu',101);
+insert into es values('bebi',102);
+insert into es values('aathira',103);
+insert into es values('anu',103);
+select*from es;
+set serveroutput on;
+declare
+temp es%rowtype;
+roll es.rollno%type;
+c number(5);
+r number(5);
+cursor cl is select*from es;
+begin
+open cl;
+c :=0;
+r :=&r;
+loop
+fetch cl into temp;
+if r=temp.rollno then
+c :=c+1;
+dbms_output.put_line(r||temp.rollno);
+end if;
+exit when c1% notfound;
+end loop;
+close cl;
+if c=1 then
+dbms_output.put_line('The data is available');
+c :=0;
+elseif c >=2 then
+dbms_output.put_line('More than one row is selected');
+else
+dbms_output.put_line('No records found');
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('No row is found');
+end;
+/
+
+
+############
+create table es(name varchar2(10), rollno number(5));
+desc es;
+insert into es values('ishu', 100);
+insert into es values('janu', 101);
+insert into es values('bebi', 102);
+insert into es values('aathira', 103);
+insert into es values('anu', 103);
+
+
+select * from es;
+
+set serveroutput on;
+declare
+  temp es%rowtype;
+  roll es.rollno%type;
+  c number(5);
+  r number(5);
+  cursor cl is select * from es;
+begin
+  open cl;
+  c := 0;
+  r := &r;  
+  loop
+    fetch cl into temp;
+    if r = temp.rollno then
+      c := c + 1;
+      dbms_output.put_line(r || ' ' || temp.rollno);
+    end if;
+    exit when cl%notfound; 
+  end loop;
+  close cl;
+  if c = 1 then
+    dbms_output.put_line('The data is available');
+    c := 0;
+  elsif c >= 2 then
+    dbms_output.put_line('More than one row is selected');
+  else
+    dbms_output.put_line('No records found');
+  end if;
+exception
+  when no_data_found then
+    dbms_output.put_line('No row is found');
+end;
+/
+
+
+

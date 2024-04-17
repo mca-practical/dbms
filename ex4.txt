@@ -1,0 +1,53 @@
+create table s(item_code number(3),item_name varchar2(15),price number(4,2));
+desc s
+insert into s values(221,'Chocolate',22.5);
+insert into s values(222,'soap',21.5);
+insert into s values(223,'pen',23.5);
+insert into s values(224,'pencil',24.5);
+insert into s values(225,'box',25.5);
+insert into s values(226,'powder',21.5);
+insert into s values(227,'scale',26.5);
+insert into s values(228,'note',25.5);
+insert into s values(229,'pen pencil',27.5);
+insert into s values(230,'tipbox',28.5);
+select*from s;
+create table v(item_name varchar2(15),quantity number(2));
+desc v
+insert into v values('powder',2);
+insert into v values('soap',8);
+insert into v values('pen',5);
+insert into v values('box',9);
+insert into v values('pencil',6);
+insert into v values('note',4);
+select*from v;
+create view asn as select item_code,s.item_name,price,quantity from s,v where s.item_name=v.item_name;
+select*from asn;
+select item_code,item_name,price,quantity,price*quantity from asn;
+
+############################
+
+create table s(item_code number(3), item_name varchar2(15), price number(4,2));
+insert into s values(221,'Chocolate',22.5);
+insert into s values(222,'soap',21.5);
+insert into s values(223,'pen',23.5);
+insert into s values(224,'pencil',24.5);
+insert into s values(225,'box',25.5);
+insert into s values(226,'powder',21.5);
+insert into s values(227,'scale',26.5);
+insert into s values(228,'note',25.5);
+insert into s values(229,'pen pencil',27.5);
+insert into s values(230,'tipbox',28.5);
+desc s;
+select * from s;
+create table v(item_name varchar2(15), quantity number(2));
+insert into v values('powder',2);
+insert into v values('soap',8);
+insert into v values('pen',5);
+insert into v values('box',9);
+insert into v values('pencil',6);
+insert into v values('note',4);
+desc v;
+select * from v;
+create view asn as select item_code, s.item_name, price, quantity from s, v where s.item_name = v.item_name;
+select * from asn;
+select item_code, item_name, price, quantity, price*quantity from asn;

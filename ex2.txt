@@ -1,0 +1,123 @@
+create table employee(empno number(5),empname varchar2(10),salary number(8,2),deptno number(5));
+desc employee;
+alter table employee add job varchar2(15);
+desc employee;
+alter table employee modify deptno number(30);
+desc employee;
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job');
+#Enter value for empno:
+101
+#Enter value for empname:
+athira
+#Enter value for salary:
+30000
+#Enter value for deptno:
+05
+#Enter value for job:
+mech
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job');
+#Enter value for empno:
+102
+#Enter value for empname:
+bebisha
+#Enter value for salary:
+40000
+#Enter value for deptno:
+06
+#Enter value for job:
+mnc
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+103
+#Enter value for empname:
+bershiba
+#Enter value for salary:
+30000
+#Enter value for deptno:
+05
+#Enter value for job:
+mech
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+104
+#Enter value for empname:
+beniha
+#Enter value for salary:
+40000
+#Enter value for deptno:
+06
+#Enter value for job:
+ac
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+105
+#Enter value for empname:
+ishu
+#Enter value for salary:
+50000
+#Enter value for deptno:
+05
+#Enter value for job:
+mech
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+106
+#Enter value for empname:
+janu
+#Enter value for salary:
+45000
+#Enter value for deptno:
+06
+#Enter value for job:
+mnc
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+107
+#Enter value for empname:
+anitha
+#Enter value for salary:
+50000
+#Enter value for deptno:
+05
+#Enter value for job:
+mech
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+108
+#Enter value for empname:
+reshma
+#Enter value for salary:
+50000
+#Enter value for deptno:
+06
+#Enter value for job:
+mnc
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+109
+#Enter value for empname:
+sreeja
+#Enter value for salary:
+40000
+#Enter value for deptno:
+05
+#Enter value for job:
+civil
+insert into employee values(&empno,'&empname',&salary,&deptno,'&job'
+#Enter value for empno:
+110
+#Enter value for empname:
+usha
+#Enter value for salary:
+30000
+#Enter value for deptno:
+06
+#Enter value for job:
+mech
+select*from employee;
+select*from employee order by empname;
+select*from employee where salary>10000;
+delete from employee where deptno=05;
+select*from employee;
+drop table employee;
+desc employee;

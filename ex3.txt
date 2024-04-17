@@ -1,0 +1,15 @@
+set serveroutput on;
+declare
+r number(5);
+c number(5);
+i number(5);
+p number(5);
+begin
+r:=&r;
+p:=&p;
+for i in 1..p loop
+c:=i*r;
+dbms_output.put_line(i||'*'||r||'='||c);
+end loop;
+end;
+/

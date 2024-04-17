@@ -1,0 +1,130 @@
+create table stmkk(name varchar2(15),rollno number(5),mark1 number(3),mark2 number(3),mark3 number(3),total number(4),result varchar2(5),rank varchar2(5));
+desc stmkk;
+insert into stmkk values('Aathi',101,98,60,87,0,0,0);
+insert into stmkk values('Bebi',102,85,50,78,0,0,0);
+insert into stmkk values('Beni',103,78,55,67,0,0,0);
+insert into stmkk values('Bershi',104,68,35,37,0,0,0);
+insert into stmkk values('Ishu',105,58,35,87,0,0,0);
+insert into stmkk values('Jancy',106,48,45,78,0,0,0);
+insert into stmkk values('Nilo',107,88,65,77,0,0,0);
+insert into stmkk values('Ani',108,59,45,77,0,0,0);
+insert into stmkk values('Resh',109,68,85,47,0,0,0);
+insert into stmkk values('Krish',110,82,56,72,0,0,0);
+select * from stmkk;
+set serveroutput on;
+declare
+temp stmkk%rowtype;
+nam stmkk.name%type;
+rno stmkk.rollno%type;
+m1 stmkk.mark1%type;
+m2 stmkk.mark2%type;
+m3 stmkk.mark3%type;
+tot stmkk.total%type;
+res stmkk.result%type;
+rk stmk.rank%type;
+av number(7,2);
+cursor cl is select*from stmkk;
+begin
+open cl;
+rno:101;
+loop
+fetch cl into temp;
+tot:=temp.mark1+temp.mark2+temp.mark3;
+update stmkk set total=tot where rno=rollno;
+if(temp.mark1>=35)and(temp.mark2>=35)and(temp.mark3>=35)then
+res:='PASS';
+else
+res:='FAIL';
+end if;
+update stmkk set result=res where rno=rollno;
+av:=tot/3;
+if(av>=60)then
+rk:'FIRST';
+end if;
+if((av<60)and(av>=55))then
+rk:='SECON';
+end if;
+if(av<55)then
+rk:='THIRD';
+end if;
+if(res='FAIL')then
+rk:='FAIL';
+end if;
+update stmkk set rank=rk where rno=rollno;
+rno:=rno+1;
+commit;
+exit when cl%notfound;
+end loop;
+close cl;
+end;
+/
+select*from stmkk;
+
+
+
+###########################
+create table stmkk(
+  name varchar2(15),
+  rollno number(5),
+  mark1 number(3),
+  mark2 number(3),
+  mark3 number(3),
+  total number(4),
+  result varchar2(5),
+  rank varchar2(5)
+);
+
+insert into stmkk values('Aathi',101,98,60,87,0,null,null);
+insert into stmkk values('Bebi',102,85,50,78,0,null,null);
+insert into stmkk values('Beni',103,78,55,67,0,null,null);
+insert into stmkk values('Bershi',104,68,35,37,0,null,null);
+insert into stmkk values('Ishu',105,58,35,87,0,null,null);
+insert into stmkk values('Jancy',106,48,45,78,0,null,null);
+insert into stmkk values('Nilo',107,88,65,77,0,null,null);
+insert into stmkk values('Ani',108,59,45,77,0,null,null);
+insert into stmkk values('Resh',109,68,85,47,0,null,null);
+insert into stmkk values('Krish',110,82,56,72,0,null,null);
+
+select * from stmkk;
+set serveroutput on;
+
+declare
+  temp stmkk%rowtype;
+  av number(7,2);
+  cursor cl is select * from stmkk;
+begin
+  open cl;
+  loop
+    fetch cl into temp;
+    exit when cl%notfound;
+
+    temp.total := temp.mark1 + temp.mark2 + temp.mark3;
+    update stmkk set total = temp.total where rollno = temp.rollno;
+
+    if (temp.mark1 >= 35 and temp.mark2 >= 35 and temp.mark3 >= 35) then
+      temp.result := 'PASS';
+    else
+      temp.result := 'FAIL';
+    end if;
+    update stmkk set result = temp.result where rollno = temp.rollno;
+
+    av := temp.total / 3;
+    if (av >= 60) then
+      temp.rank := 'FIRST';
+    elsif (av >= 55) then
+      temp.rank := 'SECOND';
+    elsif (av < 55) then
+      temp.rank := 'THIRD';
+    end if;
+    update stmkk set rank = temp.rank where rollno = temp.rollno;
+  end loop;
+
+  commit;
+  close cl;
+end;
+/
+
+select * from stmkk;
+
+
+

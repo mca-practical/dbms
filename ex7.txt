@@ -1,0 +1,23 @@
+set serveroutput on;
+create or replace function cot(c in varchar)
+return number as
+r varchar2(20);
+s number;
+begin
+r:=c;
+s:=length(r);
+return(s);
+end cot;
+/
+
+#Function created.
+
+declare
+r varchar(20);
+v number;
+begin
+r:='&enter_string';
+v:=cot(r);
+dbms_output.put_line('string is'||r||'and length='||v);
+end;
+/

@@ -1,0 +1,18 @@
+set serveroutput on;
+declare n number(15);
+s number(30);
+fact number(30);
+i number(15);
+j number(15);
+begin n :=&n;
+s :=0;
+for j in 1..n loop
+fact :=1;
+for i in 1..j loop
+fact :=fact*i;
+end loop;
+s :=s+fact;
+end loop;
+dbms_output.put_line('the sum of factorial ='||s);
+end;
+/

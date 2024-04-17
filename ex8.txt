@@ -1,0 +1,89 @@
+set serveroutput on
+declare cusid number(10);
+cusname varchar2(15);
+sales number(7,2);
+disc number(7,2);
+netch number(7,2);
+begin
+cusid := &cusid;
+cusname := '&cusname';
+sales := &sales;
+if(sales>50000)then
+disc := sales*50/100;
+elseif(sales>25000)then
+disc := sales*25/100;
+elseif(sales>10000)then
+disc := sales*10/100;
+elseif(sales>1000)then
+disc := sales*5/100;
+else
+disc := sales*2/100;
+end if;
+netch := sales-disc;
+dbms_output.put_line('********************');
+dbms_output.put_line('Sales report');
+dbms_output.put_line('********************');
+dbms_output.put_line('customerid='||cusid);
+dbms_output.put_line('customername='||cusname);
+dbms_output.put_line('Sales amount='||sales);
+dbms_output.put_line('Discount='||disc);
+dbms_output.put_line('net charge='||netch);
+dbms_output.put_line('************************');
+end;
+/
+
+
+##################
+set serveroutput on;
+
+declare 
+  cusid number(10);
+  cusname varchar2(15);
+  sales number(7,2);
+  disc number(7,2);
+  netch number(7,2);
+begin
+  cusid := &cusid;
+  cusname := '&cusname';
+  sales := &sales;
+  
+  if sales > 50000 then
+    disc := sales * 0.5; 
+  elsif sales > 25000 then
+    disc := sales * 0.25; 
+  elsif sales > 10000 then
+    disc := sales * 0.1; 
+  elsif sales > 1000 then
+    disc := sales * 0.05;
+  else
+    disc := sales * 0.02;
+  end if;
+  
+  netch := sales - disc;
+  
+  dbms_output.put_line('********************');
+  dbms_output.put_line('Sales report');
+  dbms_output.put_line('********************');
+  dbms_output.put_line('Customer ID=' || cusid);
+  dbms_output.put_line('Customer Name=' || cusname);
+  dbms_output.put_line('Sales Amount=' || sales);
+  dbms_output.put_line('Discount=' || disc);
+  dbms_output.put_line('Net Charge=' || netch);
+  dbms_output.put_line('************************');
+end;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
